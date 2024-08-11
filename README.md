@@ -38,42 +38,43 @@ Volg de onderstaande stappen om de applicatie lokaal op te zetten:
    source venv/bin/activate
    ```
 
-Installeer de vereiste Python-pakketten:
+2. **Installeer de vereiste Python-pakketten:**
 
-    ```bash
+   ```bash
 
-    pip install -r requirements.txt
-    ```
+   pip install -r requirements.txt
+   ```
 
-Initialiseer de SQLite-database:
+3. **Initialiseer de SQLite-database:**
 
-    ```bash
+   ```bash
 
-    flask db init
-    flask db migrate -m "Initial migration."
-    flask db upgrade
-    ```
+   flask db init
+   flask db migrate -m "Initial migration."
+   flask db upgrade
+   ```
 
-Start de applicatie:
+4. **Start de applicatie:**
 
-    ```bash
+   ```bash
 
-    flask run
-    ```
+   flask run
+   ```
 
-Open je browser en ga naar:
+5. **Open je browser en ga naar:**
 
-    ```bash
-    http://127.0.0.1:5000/
-    ```
+   ```bash
+
+   http://127.0.0.1:5000/
+   ```
 
 📖 Gebruik
-Gebruikersdashboard
+**Gebruikersdashboard**
 
 Bekijk beschikbare drankjes: Op de homepage kun je een overzicht zien van alle beschikbare drankjes en hun prijzen.
 Koop een drankje: Voer je RFID-kaartgegevens in en selecteer een drankje om het te kopen.
 
-Admin-paneel
+**Admin-paneel**
 
 Login: Voer de admin code in om toegang te krijgen tot het beheerdersdashboard.
 Gebruikers beheren: Voeg nieuwe gebruikers toe, bewerk of verwijder bestaande gebruikers.
@@ -83,7 +84,7 @@ Saldo beheren: Voeg saldo toe aan gebruikersaccounts en beheer de kaartinformati
 📂 Projectstructuur
 
     ```plaintext
-    
+
     digitale-drankkaart/
     │
     ├── app.py                  # Hoofdbestand dat de applicatie start
