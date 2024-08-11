@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Card Management</title>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Card Management</h1>
+      <a href="{{ url_for('add_card') }}" class="btn btn-primary"
+        >Add New Card</a
+      >
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Card ID</th>
+            <th>User</th>
+            <th>RFID</th>
+            <th>Balance</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for card in cards %}
+          <tr>
+            <td>{{ card.id }}</td>
+            <td>{{ user.name }}</td>
+            <td>{{ card.rfid }}</td>
+            <td>{{ account.balance }}</td>
+            <td>
+              <a
+                href="{{ url_for('edit_card', id=card.id) }}"
+                class="btn btn-sm btn-filled-primary pa-2 me-2"
+                >Edit</a
+              >
+              <a
+                href="{{ url_for('delete_card', id=card.id) }}"
+                class="btn btn-danger"
+                >Delete</a
+              >
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="4">
+              <a href="{{ url_for('admin_menu') }}" class="btn btn-secondary"
+                >Back to Admin Menu</a
+              >
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </body>
+</html>

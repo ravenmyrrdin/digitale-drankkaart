@@ -1,0 +1,112 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Digitale Drankkaart</title>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="./favicon.ico" type="favicon" />
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="my-4">Koop een Drankje</h1>
+      <div class="row">
+        {% for drink in drinks %}
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+          <div class="card h-100">
+            <img
+              class="card-img-top"
+              src="{{ drink.image_url }}"
+              alt="{{ drink.name }}"
+            />
+            <div class="card-body">
+              <h4 class="card-title">{{ drink.name }}</h4>
+              <p class="card-text">Prijs: {{ drink.price }} tokens</p>
+              <button
+                class="btn btn-primary add-drink"
+                data-id="{{ drink.id }}"
+                data-name="{{ drink.name }}"
+                data-price="{{ drink.price }}"
+              >
+                Toevoegen
+              </button>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      <h2 class="my-4">Bestelling</h2>
+      <ul id="order-list" class="list-group mb-4"></ul>
+      <button
+        class="btn btn-primary"
+        onclick="window.location.href='/admin/login'"
+      >
+        Login
+      </button>
+      <button id="confirm-order" class="btn btn-success">
+        Bevestig Bestelling
+      </button>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script>
+      let order = [];
+
+      $(".add-drink").on("click", function () {
+        const drink = {
+          id: $(this).data("id"),
+          name: $(this).data("name"),
+          price: $(this).data("price"),
+        };
+        order.push(drink);
+        updateOrderList();
+      });
+
+      function updateOrderList() {
+        $("#order-list").empty();
+        order.forEach((drink, index) => {
+          $("#order-list").append(
+            `<li class="list-group-item">${drink.name} - ${drink.price} tokens <button class="btn btn-danger btn-sm float-right remove-drink" data-index="${index}">Verwijder</button></li>`
+          );
+        });
+      }
+
+      $("#order-list").on("click", ".remove-drink", function () {
+        const index = $(this).data("index");
+        order.splice(index, 1);
+        updateOrderList();
+      });
+
+      $("#confirm-order").on("click", function () {
+        if (order.length === 0) {
+          alert("Geen drankjes in bestelling");
+          return;
+        }
+
+        const rfid = prompt("Houd uw kaart tegen de lezer en voer de RFID in:");
+        if (!rfid) {
+          alert("Geen RFID ingevoerd");
+          return;
+        }
+
+        order.forEach((drink) => {
+          $.post(
+            "/buy_drink",
+            { rfid: rfid, drink_id: drink.id },
+            function (data) {
+              if (data.status === "error") {
+                alert(data.message);
+              }
+            }
+          );
+        });
+
+        alert("Bestelling bevestigd");
+        order = [];
+        updateOrderList();
+      });
+    </script>
+  </body>
+</html>

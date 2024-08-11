@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Admin Menu</title>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <nav class="navbar navbar-dark bg-primary">
+        <span class="navbar-brand">Admin Menu</span>
+      </nav>
+      <ul class="list-group">
+        <li class="list-group-item">
+          <a href="{{ url_for('admin_drinks') }}">Manage Drinks</a>
+        </li>
+        <li class="list-group-item">
+          <a href="{{ url_for('admin_users') }}">Manage Users</a>
+        </li>
+        <li class="list-group-item">
+          <a href="{{ url_for('admin_accounts') }}">View Accounts</a>
+        </li>
+        <li class="list-group-item">
+          <a href="{{ url_for('admin_cards') }}">View Cards</a>
+        </li>
+      </ul>
+    </div>
+    <br />
+    <div class="container">
+      <nav class="navbar navbar-dark bg-primary">
+        <span class="navbar-brand">Balance management</span>
+      </nav>
+      <ul class="list-group">
+        <li class="list-group-item">
+          <a href="{{ url_for('admin_add_balance') }}">Update Balance</a>
+        </li>
+      </ul>
+    </div>
+    <br />
+    <div class="container">
+      <a href="{{ url_for('admin_logout') }}" class="btn btn-danger">Logout</a>
+    </div>
+  </body>
+</html>
