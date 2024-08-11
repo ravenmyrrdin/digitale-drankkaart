@@ -25,7 +25,7 @@ Volg de onderstaande stappen om de applicatie lokaal op te zetten:
 1. **Clone de repository:**
 
    ```bash
-   git clone https://github.com/jouwgebruikersnaam/digitale-drankkaart.git
+   git clone https://github.com/ravenmyrrdin/digitale-drankkaart.git
    cd digitale-drankkaart
    ```
 
@@ -38,29 +38,29 @@ Volg de onderstaande stappen om de applicatie lokaal op te zetten:
 
 Installeer de vereiste Python-pakketten:
 
-```bash
-
-pip install -r requirements.txt
-```
+    ```bash
+    pip install -r requirements.txt
+    ```
 
 Initialiseer de SQLite-database:
 
-```bash
-
-flask db init
-flask db migrate -m "Initial migration."
-flask db upgrade
-```
+    ```bash
+    flask db init
+    flask db migrate -m "Initial migration."
+    flask db upgrade
+    ```
 
 Start de applicatie:
 
-```bash
-flask run
-```
+    ```bash
+    flask run
+    ```
 
 Open je browser en ga naar:
 
+    ```bash
     http://127.0.0.1:5000/
+    ```
 
 📖 Gebruik
 Gebruikersdashboard
@@ -77,18 +77,18 @@ Admin-paneel
 
 📂 Projectstructuur
 
-```plaintext
-digitale-drankkaart/
-│
-├── app.py # Hoofdbestand dat de applicatie start
-├── models.py # Database-modellen voor gebruikers, kaarten, etc.
-├── routes/
-│ ├── admin_routes.py # Routes specifiek voor het admin-gedeelte
-│ └── user_routes.py # Routes specifiek voor het gebruikersgedeelte
-├── static/ # Statische bestanden (CSS, JS, afbeeldingen)
-├── templates/ # HTML-templates voor de weergave van pagina's
-└── README.md # Dit bestand
-```
+    ```plaintext
+    digitale-drankkaart/
+    │
+    ├── app.py                  # Hoofdbestand dat de applicatie start
+    ├── models.py               # Database-modellen voor gebruikers, kaarten, etc.
+    ├── routes/
+    │ ├── admin_routes.py       # Routes specifiek voor het admin-gedeelte
+    │ └── user_routes.py        # Routes specifiek voor het gebruikersgedeelte
+    ├── static/                 # Statische bestanden (CSS, JS, afbeeldingen)
+    ├── templates/              # HTML-templates voor de weergave van pagina's
+    └── README.md               # Dit bestand
+    ```
 
 🌐 Routes en Functies
 Gebruikersroutes
@@ -110,12 +110,3 @@ Voel je vrij om bij te dragen aan dit project! Je kunt een pull request indienen
 📜 Licentie
 
 Dit project is gelicentieerd onder de MIT-licentie - zie het LICENSE bestand voor meer informatie.
-
-### Toelichting:
-
-- **Badges**: Deze geven snel inzicht in gebruikte technologieën.
-- **Instructies**: Voor zowel installatie als gebruik zijn stapsgewijs uitgewerkt.
-- **Projectstructuur**: Dit geeft een overzicht van de bestanden en mappen, wat handig is voor nieuwe ontwikkelaars.
-- **Routes en Functies**: Deze sectie somt belangrijke routes op voor zowel gebruikers als beheerders.
-
-Pas de instructies en namen aan waar nodig om ze perfect te laten aansluiten op jouw project
