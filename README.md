@@ -27,18 +27,21 @@ Volg de onderstaande stappen om de applicatie lokaal op te zetten:
    ```bash
    git clone https://github.com/jouwgebruikersnaam/digitale-drankkaart.git
    cd digitale-drankkaart
-
-    Maak een virtual environment aan en activeer deze:
    ```
 
-python3 -m venv venv
-source venv/bin/activate
+   Maak een virtual environment aan en activeer deze:
+
+   ```bash
+   python3 -m venv venv
+   source venv/bin/activate
+   ```
 
 Installeer de vereiste Python-pakketten:
 
-bash
+```bash
 
 pip install -r requirements.txt
+```
 
 Initialiseer de SQLite-database:
 
@@ -74,6 +77,7 @@ Admin-paneel
 
 📂 Projectstructuur
 
+```plaintext
 digitale-drankkaart/
 │
 ├── app.py # Hoofdbestand dat de applicatie start
@@ -84,6 +88,7 @@ digitale-drankkaart/
 ├── static/ # Statische bestanden (CSS, JS, afbeeldingen)
 ├── templates/ # HTML-templates voor de weergave van pagina's
 └── README.md # Dit bestand
+```
 
 🌐 Routes en Functies
 Gebruikersroutes
