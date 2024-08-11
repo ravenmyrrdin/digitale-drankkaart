@@ -25,6 +25,7 @@ Volg de onderstaande stappen om de applicatie lokaal op te zetten:
 1. **Clone de repository:**
 
    ```bash
+
    git clone https://github.com/ravenmyrrdin/digitale-drankkaart.git
    cd digitale-drankkaart
    ```
@@ -32,6 +33,7 @@ Volg de onderstaande stappen om de applicatie lokaal op te zetten:
    Maak een virtual environment aan en activeer deze:
 
    ```bash
+
    python3 -m venv venv
    source venv/bin/activate
    ```
@@ -39,12 +41,14 @@ Volg de onderstaande stappen om de applicatie lokaal op te zetten:
 Installeer de vereiste Python-pakketten:
 
     ```bash
+
     pip install -r requirements.txt
     ```
 
 Initialiseer de SQLite-database:
 
     ```bash
+
     flask db init
     flask db migrate -m "Initial migration."
     flask db upgrade
@@ -53,6 +57,7 @@ Initialiseer de SQLite-database:
 Start de applicatie:
 
     ```bash
+
     flask run
     ```
 
@@ -65,19 +70,20 @@ Open je browser en ga naar:
 📖 Gebruik
 Gebruikersdashboard
 
-    Bekijk beschikbare drankjes: Op de homepage kun je een overzicht zien van alle beschikbare drankjes en hun prijzen.
-    Koop een drankje: Voer je RFID-kaartgegevens in en selecteer een drankje om het te kopen.
+Bekijk beschikbare drankjes: Op de homepage kun je een overzicht zien van alle beschikbare drankjes en hun prijzen.
+Koop een drankje: Voer je RFID-kaartgegevens in en selecteer een drankje om het te kopen.
 
 Admin-paneel
 
-    Login: Voer de admin code in om toegang te krijgen tot het beheerdersdashboard.
-    Gebruikers beheren: Voeg nieuwe gebruikers toe, bewerk of verwijder bestaande gebruikers.
-    Drankjes beheren: Voeg nieuwe drankjes toe, bewerk of verwijder bestaande drankjes.
-    Saldo beheren: Voeg saldo toe aan gebruikersaccounts en beheer de kaartinformatie.
+Login: Voer de admin code in om toegang te krijgen tot het beheerdersdashboard.
+Gebruikers beheren: Voeg nieuwe gebruikers toe, bewerk of verwijder bestaande gebruikers.
+Drankjes beheren: Voeg nieuwe drankjes toe, bewerk of verwijder bestaande drankjes.
+Saldo beheren: Voeg saldo toe aan gebruikersaccounts en beheer de kaartinformatie.
 
 📂 Projectstructuur
 
     ```plaintext
+    
     digitale-drankkaart/
     │
     ├── app.py                  # Hoofdbestand dat de applicatie start
