@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Card</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  </head>
+  <body>
+    <div class="container mt-5">
+      <h1 class="mb-4">Add New Card</h1>
+      <form action="{{ url_for('add_card') }}" method="post">
+        <div class="form-group">
+          <label for="rfid">RFID</label>
+          <input
+            type="text"
+            class="form-control"
+            id="rfid"
+            name="rfid"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="user_search">Search User</label>
+          <input
+            type="text"
+            class="form-control"
+            id="user_search"
+            placeholder="Enter user name"
+          />
+          <select id="user_list" class="form-control mt-2"></select>
+          <input type="hidden" id="user_id" name="user_id" required />
+        </div>
+        <div class="form-group">
+          <label for="account_search">Search Account</label>
+          <input
+            type="text"
+            class="form-control"
+            id="account_search"
+            placeholder="Enter account ID"
+          />
+          <select id="account_list" class="form-control mt-2"></select>
+          <input type="hidden" id="account_id" name="account_id" required />
+        </div>
+        <button type="submit" class="btn btn-primary">Add Card</button>
+        <a href="{{ url_for('admin_cards') }}" class="btn btn-secondary"
+          >Cancel</a
+        >
+      </form>
+    </div>
+    <script>
+      $(document).ready(function () {
+        // Search for users
+        $("#user_search").on("input", function () {
+          var query = $(this).val();
+          if (query.length > 2) {
+            $.ajax({
+              url: '{{ url_for("search_users") }}',
+              method: "GET",
+              data: { query: query },
+              success: function (data) {
+                $("#user_list").empty();
+                data.forEach(function (user) {
+                  $("#user_list").append(
+                    '<option value="' + user.id + '">' + user.name + "</option>"
+                  );
+                });
+              },
+            });
+          } else {
+            $("#user_list").empty();
+          }
+        });
+
+        $("#user_list").on("change", function () {
+          var user_id = $(this).val();
+          $("#user_id").val(user_id);
+        });
+
+        // Search for accounts
+        $("#account_search").on("input", function () {
+          var query = $(this).val();
+          if (query.length > 0) {
+            $.ajax({
+              url: '{{ url_for("search_accounts") }}',
+              method: "GET",
+              data: { query: query },
+              success: function (data) {
+                $("#account_list").empty();
+                data.forEach(function (account) {
+                  $("#account_list").append(
+                    '<option value="' +
+                      account.id +
+                      '">' +
+                      account.id +
+                      "</option>"
+                  );
+                });
+              },
+            });
+          } else {
+            $("#account_list").empty();
+          }
+        });
+
+        $("#account_list").on("change", function () {
+          var account_id = $(this).val();
+          $("#account_id").val(account_id);
+        });
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>

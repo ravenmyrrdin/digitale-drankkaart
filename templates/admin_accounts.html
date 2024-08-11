@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manage Accounts</title>
+    <link
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container mt-5">
+      <h1 class="mb-4">Manage Accounts</h1>
+      <a href="{{ url_for('add_account') }}" class="btn btn-primary mb-3"
+        >Add New Account</a
+      >
+      {% if accounts %}
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Balance</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for account in accounts %}
+            <tr>
+              <td>{{ account.id }}</td>
+              <td>{{ account.balance }}</td>
+              <td>
+                <a
+                  href="{{ url_for('edit_account', id=account.id) }}"
+                  class="btn btn-warning btn-sm"
+                  >Edit</a
+                >
+                <form
+                  action="{{ url_for('delete_account', id=account.id) }}"
+                  method="post"
+                  class="d-inline"
+                >
+                  <button type="submit" class="btn btn-danger btn-sm">
+                    Delete
+                  </button>
+                </form>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      {% else %}
+      <p class="text-warning">No accounts available.</p>
+      {% endif %}
+      <a href="{{ url_for('admin_menu') }}" class="btn btn-secondary"
+        >Back to Admin Menu</a
+      >
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>
