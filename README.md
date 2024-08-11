@@ -83,7 +83,7 @@ Saldo beheren: Voeg saldo toe aan gebruikersaccounts en beheer de kaartinformati
 
 📂 Projectstructuur
 
-    ```plaintext
+    ```
 
     digitale-drankkaart/
     │
@@ -98,18 +98,19 @@ Saldo beheren: Voeg saldo toe aan gebruikersaccounts en beheer de kaartinformati
     ```
 
 🌐 Routes en Functies
-Gebruikersroutes
 
-    GET /                           - Startpagina met een overzicht van beschikbare drankjes.
-    POST /buy_drink                 - Koopt een drankje op basis van RFID en drankje ID.
+- Gebruikersroutes
 
-Admin Routes
+  GET / - Startpagina met een overzicht van beschikbare drankjes.
+  POST /buy_drink - Koopt een drankje op basis van RFID en drankje ID.
 
-    GET /admin/login                - Login pagina voor beheerders.
-    GET /admin/menu                 - Beheerdersmenu na succesvolle login.
-    POST /admin/update_balance      - Route om het saldo van een account bij te werken.
-    GET/POST /admin/add_balance     - Formulier om saldo toe te voegen aan een account.
-    En meer...                      - Zie de broncode voor alle beschikbare beheerdersroutes.
+- Admin Routes
+
+  GET /admin/login - Login pagina voor beheerders.
+  GET /admin/menu - Beheerdersmenu na succesvolle login.
+  POST /admin/update_balance - Route om het saldo van een account bij te werken.
+  GET/POST /admin/add_balance - Formulier om saldo toe te voegen aan een account.
+  En meer... - Zie de broncode voor alle beschikbare beheerdersroutes.
 
 🤝 Bijdragen
 
